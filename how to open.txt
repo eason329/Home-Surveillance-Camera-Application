@@ -1,0 +1,19 @@
+Generate new TLS certificate:
+openssl req -x509 -newkey rsa:4096 -keyout key.pem -out cert.pem -sha256 -days 365
+
+Change to virtual environment:
+1> cd "folder_location"
+2> source env/bin/activate
+
+Install Filebrowser:
+3> pip3 install filebrowser
+
+Run the server (new tab/window each command):
+4> (no need) ./run-redis.sh
+5> (no need) celery worker -A app.celery --loglevel=info
+6> python3 manage.py run --host=0.0.0.0 --cert=cert.pem --key=key.pem
+7> filebrowser --host 0.0.0.0 --port 5001 -d /home/pi/LoginTest1/files
+
+
+After using (Ctrl+C):
+8> deactivate

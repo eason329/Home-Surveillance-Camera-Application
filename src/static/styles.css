@@ -1,0 +1,50 @@
+.error {
+  color: red;
+  margin-bottom: 5px;
+  text-align: center;
+}
+
+a {
+  text-decoration: none;
+}
+
+.active_directory {
+    background-color: #e2fe0d;
+}
+
+.top {
+    margin-top: 5vh;
+}
+.file-explorer{
+    width: 50vw;
+}
+.path {
+    margin-top: 5vh;
+}
+.ffe-explorer {
+    flex-direction: column;
+    background-color: #c3cbdc;
+    background-image: linear-gradient(147deg, #c3cbdc 0%, #edf1f4 74%);
+
+}
+.ffe_current_path{
+    width: 100%;
+    background-color: white;
+}
+.listings {
+    max-height: 50vh;
+    max-width: 50vw;
+    overflow-y: auto;
+    background-color: whitesmoke;
+    border-radius: 5px;
+}
+
+.dropzone-container {
+    width: 50vw;
+    border: 2px dashed #0087F7;
+    border-radius: 5px;
+    padding: 20px;
+    text-align: center;
+    margin-top: 20px;
+    cursor: pointer;
+}

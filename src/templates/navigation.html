@@ -1,0 +1,26 @@
+<!-- Navigation -->
+<header class="p-3 text-bg-dark">
+  <div class="container">
+    <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
+      <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
+        <a href="{{ url_for('main.home') }}" class="nav-link px-2 text-navi"><button type="button" class="btn btn-outline-light me-2">Home</button></a>
+        {% if current_user.is_authenticated %}
+            <a href="{{ url_for('main.camera') }}" class="nav-link px-2 text-navi"><button type="button" class="btn btn-outline-light me-2">Camera</button></a>
+            {% if current_user.is_admin %}
+            <a href="{{ url_for('main.file') }}" class="nav-link px-2 text-navi"><button type="button" class="btn btn-outline-light me-2">File</button></a>
+            {% endif %}
+        {% endif %}
+      </ul>
+
+      <div class="text-end">
+        {% if current_user.is_authenticated %}
+          <a href="{{ url_for('main.settings') }}"><button type="button" class="btn btn-outline-light me-2">Settings</button></a>
+          <a href="{{ url_for('account.logout') }}"><button type="button" class="btn btn-danger me-2">Logout</button></a>
+        {% else %}
+          <a href="{{ url_for('account.login') }}"><button type="button" class="btn btn-success">Login</button></a>
+        {% endif %}
+
+      </div>
+    </div>
+  </div>
+</header>

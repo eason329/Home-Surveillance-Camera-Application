@@ -1,0 +1,2 @@
+email: admin@ee.net
+pass: ee4080

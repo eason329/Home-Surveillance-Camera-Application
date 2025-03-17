@@ -1,0 +1,38 @@
+{% extends "_base.html" %}
+
+{% block content %}
+
+<div class="row">
+  <div class="col-md-4"></div>
+  <div class="col-md-4">
+    <main class="form-signin w-100 m-auto">
+      <h1 class="h3 mb-3 fw-normal text-center">Account Delete</h1><br/>
+        {% if current_user.is_admin %}
+        <h2 class="mb-3 fw-normal text-center">Sorry, you are not allowed to perform this action.</h2>
+        {% else %}
+        <h2 class="mb-3 fw-normal text-center">WARNING!</h2>
+        <h3 class="mb-3 fw-normal text-center">This will delete your account FOREVER.</h3>
+        <h3 class="mb-3 fw-normal text-center">You will need to contact admin to register again.</h3><br/>
+        <form role="form" method="post" action="">
+          {{ form.csrf_token }}
+          <h4 class="mb-3 fw-normal text-center">To continue, please enter your password and click "Confirm Delete".</h2>
+          <div class="form-floating">
+            {{ form.password(placeholder="password", class="form-control mb-2") }}
+            {{ form.password.label }}
+              {% if form.password.errors %}
+                {% for error in form.password.errors %}
+                  <div class="alert alert-danger" role="alert">
+                    {{ error }}
+                  </div>
+                {% endfor %}
+              {% endif %}
+          </div>
+          <button class="w-100 btn btn-lg btn-danger" type="submit">Confirm Delete</button>
+        </form>
+        {% endif %}
+    </main>
+  </div>
+  <div class="col-md-4"></div>
+</div>
+
+{% endblock %}

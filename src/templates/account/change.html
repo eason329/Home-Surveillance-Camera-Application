@@ -1,0 +1,71 @@
+{% extends "_base.html" %}
+
+{% block content %}
+
+<div class="row">
+  <div class="col-md-4"></div>
+  <div class="col-md-4">
+    <main class="form-signin w-100 m-auto">
+      <h1 class="h3 mb-3 fw-normal text-center"><u>Change Account Details</u></h1>
+      <form role="form" method="post" action="">
+        {{ form.csrf_token }}
+        <h2 class="h4 mb-3 fw-normal text-center">Verify Current Password</h2>
+        <div class="form-floating">
+          {{ form.curPassword(placeholder="curPassword", class="form-control mb-2") }}
+          {{ form.curPassword.label }}
+            {% if form.curPassword.errors %}
+              {% for error in form.curPassword.errors %}
+                <div class="alert alert-danger" role="alert">
+                  {{ error }}
+                </div>
+              {% endfor %}
+            {% endif %}
+        </div>
+
+        <br/><h2 class="h4 mb-3 fw-normal text-center">Change Email Address</h2>
+        <div class="form-floating">
+          {{ form.newEmail(placeholder="newEmail", class="form-control mb-2") }}
+          {{ form.newEmail.label }}
+            {% if form.newEmail.errors %}
+              {% for error in form.newEmail.errors %}
+                <div class="alert alert-danger" role="alert">
+                  {{ error }}
+                </div>
+              {% endfor %}
+            {% endif %}
+        </div>
+
+        <br/>
+        <h2 class="h4 mb-3 fw-normal text-center">Change Password</h2>
+        <div class="form-floating">
+          {{ form.newPassword(placeholder="newPassword", class="form-control mb-2") }}
+          {{ form.newPassword.label }}
+            {% if form.newPassword.errors %}
+              {% for error in form.newPassword.errors %}
+                <div class="alert alert-danger" role="alert">
+                  {{ error }}
+                </div>
+              {% endfor %}
+            {% endif %}
+        </div>
+        <div class="form-floating">
+          {{ form.newConfirm(placeholder="Confirm Password", class="form-control mb-2") }}
+          {{ form.newConfirm.label }}
+            {% if form.newConfirm.errors %}
+              {% for error in form.newConfirm.errors %}
+                <div class="alert alert-danger" role="alert">
+                  {{ error }}
+                </div>
+              {% endfor %}
+            {% endif %}
+        </div>
+        <button class="w-100 btn btn-lg btn-primary" type="submit">Change</button>
+      </form>
+      <br/><br/>
+      <a href="{{ url_for('main.settings') }}"><button class="w-100 btn btn-lg btn-primary">Return to Settings</button></a><br/>
+    </main>
+  </div>
+  <div class="col-md-4"></div>
+</div>
+
+{% endblock %}

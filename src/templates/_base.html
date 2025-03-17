@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Home Surveillance Camera App</title>
+    <!-- meta -->
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <!-- styles -->
+    <!-- CSS only -->
+    <link rel="stylesheet" href="{{url_for('static', filename="bootstrap.min.css")}}">
+    <link rel="stylesheet" href="{{url_for('static', filename="styles.css")}}">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" href="https://unpkg.com/dropzone@5/dist/min/dropzone.min.css" type="text/css" />
+    {% block css %}{% endblock %}
+    {% block head %}{% endblock %}
+  </head>
+  <body>
+
+    {% include "navigation.html" %}
+
+    <div class="container">
+
+      <br>
+
+      <!-- messages -->
+      {% with messages = get_flashed_messages(with_categories=true) %}
+      {% if messages %}
+      <div class="row">
+        <div class="col-md-4"></div>
+        <div class="col-md-4">
+          {% for category, message in messages %}
+          <div class="alert alert-{{ category }} alert-dismissible fade show" role="alert">
+           {{message}}
+           <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+          </div>
+          {% endfor %}
+        </div>
+        <div class="col-md-4"></div>
+      </div>
+      {% endif %}
+      {% endwith %}
+
+      <!-- child template -->
+      {% block content %}{% endblock %}
+
+    </div>
+
+    <!-- scripts -->
+    <script src="{{url_for('static', filename="jquery-3.6.1.min.js")}}"></script>
+    <!-- JavaScript Bundle with Popper -->
+    <script src="{{url_for('static', filename="bootstrap.bundle.min.js")}}"></script>
+    <!--<script src="{{ url_for('static', filename='main.js') }}"></script>-->
+    <script src="https://unpkg.com/dropzone@5.9.3/dist/dropzone.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/htmx.org/dist/htmx.js"></script>
+    {% block js %}{% endblock %}
+  </body>
+</html>

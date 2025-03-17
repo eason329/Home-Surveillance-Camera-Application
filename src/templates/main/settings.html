@@ -1,0 +1,35 @@
+{% extends "_base.html" %}
+
+{% block content %}
+
+<div class="row">
+  <div class="col-md-4"></div>
+  <div class="col-md-4">
+    <main class="form-signin w-100 m-auto">
+      <h1 class="h3 mb-3 fw-normal text-center">Want to edit your password or email address?</h1>
+      <a href="{{ url_for('account.change') }}"><button class="w-100 btn btn-lg btn-primary">Change Account Details</button></a>
+      <br/><br/>
+      {% if current_user.is_2FA_enabled %}
+            <h1 class="h3 mb-3 fw-normal text-center">Want to disable 2-Factor Authrnication?</h1>
+            <a href="{{ url_for('account.disable_2fa') }}"><button class="w-100 btn btn-lg btn-danger">Disable 2FA</button></a>
+      {% else %}
+            <h1 class="h3 mb-3 fw-normal text-center">Want to setup 2-Factor Authrnication?</h1>
+            <a href="{{ url_for('account.setup_2fa') }}"><button class="w-100 btn btn-lg btn-primary">Setup 2FA</button></a>
+      {% endif %}
+      <br/><br/>
+      {% if current_user.is_admin %}
+      <h1 class="h3 mb-3 fw-normal text-center">Want to add a new user?</h1>
+      <a href="{{ url_for('account.register') }}"><button class="w-100 btn btn-lg btn-primary">Register</button></a>
+      <br/><br/>
+      {% endif %}
+      {% if not current_user.is_admin %}
+      <h1 class="h3 mb-3 fw-normal text-center">Want to delete your account?</h1>
+      <a href="{{ url_for('account.delete') }}"><button class="w-100 btn btn-lg btn-danger">Delete</button></a>
+      <br/><br/>
+      {% endif %}
+    </main>
+  </div>
+  <div class="col-md-4"></div>
+</div>
+
+{% endblock %}

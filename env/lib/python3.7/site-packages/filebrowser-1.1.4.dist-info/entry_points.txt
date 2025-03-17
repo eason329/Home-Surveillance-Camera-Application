@@ -1,0 +1,2 @@
+[console_scripts]
+filebrowser = filebrowser.main:main
